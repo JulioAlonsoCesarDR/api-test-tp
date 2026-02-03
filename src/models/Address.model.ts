@@ -28,11 +28,6 @@ class Address extends Model {
       @Column({
         type: DataType.STRING(50)  
     })
-    declare postal: string
-
-      @Column({
-        type: DataType.STRING(50)  
-    })
     declare country_code: string
 
       @Column({
