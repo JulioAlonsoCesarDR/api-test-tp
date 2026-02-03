@@ -15,13 +15,20 @@ export const getAddresses = async (req: Request, res: Response) => {
 }
 
 export const createAddress = async (req : Request, res : Response) => {
+    const { ip } = req.body;
     try {
+        // Buscar si ya existe la IP
+        const existing = await Address.findOne({ where: { ip } });
+        if (existing) {
+            return res.status(400).json({ error: "La IP ya está registrada en la BD" });
+        }
         const address = await Address.create(req.body)
-        res.json({data: address})
-    } catch (error) {
-        console.log(error)
+        res.json({data: address});
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Error interno del servidor" });
     }
-}
+ }
 
 export const deleteAddress = async (req: Request, res: Response) => {
     const { id } = req.params
