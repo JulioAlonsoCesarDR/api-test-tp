@@ -20,7 +20,7 @@ export const createAddress = async (req : Request, res : Response) => {
         // Buscar si ya existe la IP
         const existing = await Address.findOne({ where: { ip } });
         if (existing) {
-            return res.status(400).json({ error: "La IP ya está registrada en la BD" });
+            return res.status(400).json({ statusText: "La IP ya está registrada en la BD" });
         }
         const address = await Address.create(req.body)
         res.json({data: address});
