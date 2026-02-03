@@ -31,12 +31,12 @@ class Address extends Model {
     declare country_code: string
 
       @Column({
-        type: DataType.FLOAT(10, 6)  
+        type: DataType.FLOAT(10, 20)  
     })
     declare latitude: number
 
       @Column({
-        type: DataType.FLOAT(10, 6  )  
+        type: DataType.FLOAT(10, 20)  
     })
     declare longitude: number
 }
