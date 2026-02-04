@@ -1,8 +1,8 @@
 import colors from 'colors'
 import server from './server'
 
-const port = process.env.PORT || 4000
+const port = Number(process.env.PORT) || 4000
 
-server.listen(port, () => {
-    console.log( colors.cyan.bold( `REST API en el puerto ${port}`))
-})
+server.listen(port, '0.0.0.0', () => {
+  console.log(colors.cyan.bold (`Servidor escuchando en http://0.0.0.0:${port}`));
+});
